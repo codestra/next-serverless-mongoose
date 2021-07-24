@@ -24,6 +24,11 @@
     "mongoose",
     "next"
   ],
+  "workspaces": {
+    "nohoist": [
+      "**"
+    ]
+  },
   "author": "codestra",
   "license": "ISC",
   "bugs": {
@@ -44,6 +49,8 @@
     "lib/**/*"
   ],
   "dependencies": {
+    "@types/react": "^17.0.15",
+    "@types/react-dom": "^17.0.9",
     "mongodb-client-encryption": "^1.2.6",
     "mongoose": "^5.13.3",
     "tslint": "^6.1.3"
