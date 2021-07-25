@@ -1,7 +1,6 @@
 {
   "name": "@codestra/next-mongooseless",
   "version": "1.0.0",
-  "private": true,
   "description": "Mongoose helper functions to connect with mongodb in nextjs api-routes",
   "main": "src/index.ts",
   "scripts": {
@@ -24,11 +23,6 @@
     "mongoose",
     "next"
   ],
-  "workspaces": {
-    "nohoist": [
-      "**"
-    ]
-  },
   "author": "codestra",
   "license": "MIT",
   "bugs": {
@@ -42,7 +36,7 @@
     "prettier": "^2.3.2",
     "ts-jest": "^27.0.4",
     "tslint": "^6.1.3",
-    "tslint-config-prettier": "^1.13.0",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.3.5"
   },
   "files": [

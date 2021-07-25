@@ -43,7 +43,7 @@ async function useMongoose(): Promise<typeof mongoose> {
         }),
     };
 
-    cached.promise = mongoose.connect(uri, opts).then((mongoose) => mongoose);
+    cached.promise = mongoose.connect(uri, opts).then((m) => m);
   }
   cached.connected = await cached.promise;
   return cached.connected;
