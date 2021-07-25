@@ -49,7 +49,7 @@ jobs:
   #   - run:  yarn build
 
   publish-gpr:
-    needs: build
+    # needs: build
     runs-on: ubuntu-latest
     permissions:
       packages: write
