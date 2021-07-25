@@ -34,19 +34,19 @@ on:
 #           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    # - name: Use Node.js 14.x
-    - uses: actions/setup-node@v1
-      with:
-        registry-url: https://npm.pkg.github.com/
-        node-version: 14
-        scope: '@codestra'
-    # - name: install and build
-    - run:  yarn install
-    - run:  yarn build
+  # build:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v1
+  #   # - name: Use Node.js 14.x
+  #   - uses: actions/setup-node@v1
+  #     with:
+  #       registry-url: https://npm.pkg.github.com/
+  #       node-version: 14
+  #       scope: '@codestra'
+  #   # - name: install and build
+  #   - run:  yarn install
+  #   - run:  yarn build
 
   publish-gpr:
     needs: build
@@ -63,6 +63,8 @@ jobs:
         registry-url: https://npm.pkg.github.com/
       env:
         NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    - run: yarn install
+    - run: yarn build
     - run: yarn publish
 
     # - name: publish
