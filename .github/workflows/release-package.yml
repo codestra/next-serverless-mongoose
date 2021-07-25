@@ -60,6 +60,7 @@ jobs:
       with:
         node-version: 14
         registry-url: https://npm.pkg.github.com/
+    - name: deploy
     - run: yarn deploy
       env:
         NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
