@@ -45,8 +45,9 @@ jobs:
         node-version: 14
         scope: '@codestra'
     - name: install and build
-    - run:  yarn install
-    - run:  yarn build
+    - run:  |
+        yarn install
+        yarn build
 
   # publish-gpr:
   #   needs: build
