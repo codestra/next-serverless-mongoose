@@ -30,9 +30,9 @@
     ]
   },
   "author": "codestra",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/next-mongooseless/issues"
+    "url": "https://github.com/codestra/next-mongooseless/issues"
   },
   "homepage": "https://github.com/codestra/next-mongooseless#readme",
   "devDependencies": {
