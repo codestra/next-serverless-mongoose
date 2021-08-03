@@ -25,18 +25,21 @@ Both these function assume that you have set one of the two following alternativ
 MONGODB_URI=example-uri.com
 ```
 
-Or **all** of the following:
+Or the following:
 
 ```bash
 MONGODB_HOST=example-host
 MONGODB_DATABASE_NAME=example-database-name
-MONGODB_USER=example-user
-MONGODB_PASS=example-password
 ```
 
 If one of these two alternatives have been set, the following functions will automagically make sure that you have a running mongodb-connection and you will be able to do your operations.
 
-Other than the above environment variables, you dont have to do any configuration.
+For the authentication, you can set the following:
+
+```bash
+MONGODB_USER=example-user
+MONGODB_PASS=example-password
+```
 
 ### useMongoose
 
@@ -98,8 +101,8 @@ Please make sure to update tests as appropriate.
 
 ## Credits and Inspiration
 
-[nextjs with-mongoose example](https://github.com/vercel/next.js/tree/canary/examples/with-mongodb-mongoose)
-[nextjs middleware](https://hoangvvo.com/blog/nextjs-middleware)
+- [nextjs with-mongoose example](https://github.com/vercel/next.js/tree/canary/examples/with-mongodb-mongoose)
+- [nextjs middleware](https://hoangvvo.com/blog/nextjs-middleware)
 
 ## License
 
