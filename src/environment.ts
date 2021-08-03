@@ -2,22 +2,13 @@
  * Get the environment
  */
 
-interface IEnvironment {
-  MONGODB_HOST: string;
-  MONGODB_DATABASE_NAME: string;
-  MONGODB_USER: string;
-  MONGODB_PASS: string;
-  MONGODB_URI: string;
-}
+const { MONGODB_HOST, MONGODB_DATABASE_NAME, MONGODB_USER, MONGODB_PASS, MONGODB_URI, NODE_ENV } = process.env;
 
-declare const process: {
-  env: IEnvironment;
+export const initEnvironment = () => {
+  if (!MONGODB_URI && (!MONGODB_HOST || !MONGODB_DATABASE_NAME || !MONGODB_USER || !MONGODB_PASS)) {
+    throw new Error('Please define the MONGODB_URI or the other environment variable inside .env.local');
+  }
 };
+initEnvironment();
 
-const { MONGODB_HOST, MONGODB_DATABASE_NAME, MONGODB_USER, MONGODB_PASS, MONGODB_URI } = process.env;
-
-export { MONGODB_HOST, MONGODB_DATABASE_NAME, MONGODB_USER, MONGODB_PASS, MONGODB_URI };
-
-if (!MONGODB_URI && (!MONGODB_HOST || !MONGODB_DATABASE_NAME || !MONGODB_USER || !MONGODB_PASS)) {
-  throw new Error('Please define the MONGODB_URI or the other environment variable inside .env.local');
-}
+export { MONGODB_HOST, MONGODB_DATABASE_NAME, MONGODB_USER, MONGODB_PASS, MONGODB_URI, NODE_ENV };

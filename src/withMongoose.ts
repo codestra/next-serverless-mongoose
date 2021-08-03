@@ -12,13 +12,13 @@ export declare type NextApiHandlerWithMongoose<T = any> = (
   res: NextApiResponse<T>,
 ) => void | Promise<void>;
 
-function withMongoose(handler: NextApiHandlerWithMongoose) {
+const withMongoose = (handler: NextApiHandlerWithMongoose) => {
   return async (req: NextApiRequestWithMongoose, res: NextApiResponse): Promise<void> => {
     const client = await useMongoose();
 
     (req as NextApiRequestWithMongoose).mongoose = client;
     return handler(req, res);
   };
-}
+};
 
 export default withMongoose;

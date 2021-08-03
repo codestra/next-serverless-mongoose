@@ -96,6 +96,11 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
+## Credits and Inspiration
+
+[nextjs with-mongoose example](https://github.com/vercel/next.js/tree/canary/examples/with-mongodb-mongoose)
+[nextjs middleware](https://hoangvvo.com/blog/nextjs-middleware)
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)

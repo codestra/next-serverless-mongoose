@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`environment should create a document 1`] = `
+Object {
+  "n": 2,
+  "ok": 1,
+}
+`;
