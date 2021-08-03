@@ -17,22 +17,20 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-          registry-url: https://registry.npmjs.org
-      - run: yarn install
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm install
       # Publish to npm
-      - run:
-          echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" >
-          ~/.npmrc
-      - run: yarn publish --access public
+      - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       # Setup .npmrc file to publish to GitHub Packages
       - uses: actions/setup-node@v2
         with:
-          registry-url: https://npm.pkg.github.com
+          registry-url: 'https://npm.pkg.github.com'
           # Defaults to the user or organization that owns the workflow file
           scope: '@codestra'
       # Publish to GitHub Packages
-      - run: yarn publish
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
