@@ -2,7 +2,7 @@
   "name": "@codestra/next-mongooseless",
   "version": "1.1.2",
   "description": "Mongoose helper functions to connect with mongodb in nextjs api-routes",
-  "main": "src/index.ts",
+  "main": "lib/index.js",
   "scripts": {
     "test": "jest --config jestconfig.json",
     "test:dev": "jest --config jestconfig.dev.json --watch",
