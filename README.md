@@ -1,19 +1,19 @@
-# next-mongooseless
+# next-serverless-mongoose
 
-next-mongooseless is a package that provides helper functions to easily connect with a mongodb. This package was mainly build for usage with nextjs-api-routes and mongoose.
+next-serverless-mongoose is a package that provides helper functions to easily connect with a mongodb. This package was mainly build for usage with nextjs-api-routes and mongoose.
 
 ## Installation
 
 Use [npm](https://nodejs.org/en/download/) for installation:
 
 ```bash
-npm install @codestra/next-mongooseless
+npm install @codestra/next-serverless-mongoose
 ```
 
 Or use [yarn](https://yarnpkg.com/) for installation:
 
 ```bash
-yarn add @codestra/next-mongooseless
+yarn add @codestra/next-serverless-mongoose
 ```
 
 ## Usage
@@ -49,7 +49,7 @@ Example:
 
 ```javascript
 import { NextApiRequest, NextApiResponse } from 'next';
-import { useMongoose } from '@codestra/next-mongooseless';
+import { useMongoose } from '@codestra/next-serverless-mongoose';
 import User from '../../models/User';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -76,7 +76,7 @@ Example:
 
 ```javascript
 import { NextApiResponse } from 'next';
-import { withMongoose, NextApiRequestWithMongoose } from '@codestra/next-mongooseless';
+import { withMongoose, NextApiRequestWithMongoose } from '@codestra/next-serverless-mongoose';
 import User from '../../models/User';
 
 const handler = async (req: NextApiRequestWithMongoose, res: NextApiResponse) => {

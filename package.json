@@ -1,5 +1,5 @@
 {
-  "name": "@codestra/next-mongooseless",
+  "name": "@codestra/next-serverless-mongoose",
   "version": "1.1.3",
   "description": "Mongoose helper functions to connect with mongodb in nextjs api-routes",
   "main": "lib/index.js",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codestra/next-mongooseless.git"
+    "url": "git+https://github.com/codestra/next-serverless-mongoose.git"
   },
   "keywords": [
     "mongoose",
@@ -27,9 +27,9 @@
   "author": "codestra",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/codestra/next-mongooseless/issues"
+    "url": "https://github.com/codestra/next-serverless-mongoose/issues"
   },
-  "homepage": "https://github.com/codestra/next-mongooseless#readme",
+  "homepage": "https://github.com/codestra/next-serverless-mongoose#readme",
   "devDependencies": {
     "@types/jest": "^26.0.24",
     "codecov": "^3.1.0",
