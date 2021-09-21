@@ -6,9 +6,11 @@ import { MONGODB_URI, MONGODB_HOST, MONGODB_DATABASE_NAME, MONGODB_USER, MONGODB
  * in development. This prevents connections growing exponentially
  * during API Route usage.
  */
+// @ts-ignore
 let cached = global.mongoose;
 
 if (!cached) {
+  // @ts-ignore
   cached = global.mongoose = { connected: undefined, promise: undefined } as any;
 }
 
@@ -25,16 +27,9 @@ const useMongoose = async (options?: mongoose.ConnectionOptions): Promise<typeof
     }
     if (!cached.promise) {
       const uri = MONGODB_URI ? MONGODB_URI : `mongodb://${MONGODB_HOST}/${MONGODB_DATABASE_NAME}`;
-
       const opts = {
         // auth
-        ...(MONGODB_USER &&
-          MONGODB_PASS && {
-            auth: {
-              user: MONGODB_USER,
-              password: MONGODB_PASS,
-            },
-          }),
+        ...(MONGODB_USER && MONGODB_PASS && { user: MONGODB_USER, pass: MONGODB_PASS }),
         /* istanbul ignore next */
         serverSelectionTimeoutMS: NODE_ENV === 'development' ? 3000 : 10000,
         ...options,
@@ -45,7 +40,7 @@ const useMongoose = async (options?: mongoose.ConnectionOptions): Promise<typeof
     cached.connected = await cached.promise;
     return cached.connected;
   } catch (e: any) {
-    return e;
+    throw new Error(e);
   }
 };
 
