@@ -19,36 +19,34 @@ if (!cached) {
  * @returns A mongoose connection
  */
 const useMongoose = async (options?: mongoose.ConnectionOptions): Promise<typeof mongoose> => {
-  if (cached.connected) {
+  try {
+    if (cached.connected) {
+      return cached.connected;
+    }
+    if (!cached.promise) {
+      const uri = MONGODB_URI ? MONGODB_URI : `mongodb://${MONGODB_HOST}/${MONGODB_DATABASE_NAME}`;
+
+      const opts = {
+        // auth
+        ...(MONGODB_USER &&
+          MONGODB_PASS && {
+            auth: {
+              user: MONGODB_USER,
+              password: MONGODB_PASS,
+            },
+          }),
+        /* istanbul ignore next */
+        serverSelectionTimeoutMS: NODE_ENV === 'development' ? 3000 : 10000,
+        ...options,
+      };
+
+      cached.promise = mongoose.connect(uri, opts).then((m) => m);
+    }
+    cached.connected = await cached.promise;
     return cached.connected;
+  } catch (e: any) {
+    return e;
   }
-  if (!cached.promise) {
-    const uri = MONGODB_URI ? MONGODB_URI : `mongodb://${MONGODB_HOST}/${MONGODB_DATABASE_NAME}`;
-
-    const opts = {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      bufferCommands: false,
-      bufferMaxEntries: 0,
-      useFindAndModify: false,
-      useCreateIndex: true,
-      // auth
-      ...(MONGODB_USER &&
-        MONGODB_PASS && {
-          auth: {
-            user: MONGODB_USER,
-            password: MONGODB_PASS,
-          },
-        }),
-      /* istanbul ignore next */
-      serverSelectionTimeoutMS: NODE_ENV === 'development' ? 3000 : 10000,
-      ...options,
-    };
-
-    cached.promise = mongoose.connect(uri, opts).then((m) => m);
-  }
-  cached.connected = await cached.promise;
-  return cached.connected;
 };
 
 export default useMongoose;
