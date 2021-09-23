@@ -9,10 +9,7 @@ describe('environment', () => {
 
   beforeAll(async () => {
     mongoServer = await MongoMemoryServer.create();
-    con = await MongoClient.connect(mongoServer.getUri(), {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    con = await MongoClient.connect(mongoServer.getUri(), {});
   });
 
   beforeEach(() => {

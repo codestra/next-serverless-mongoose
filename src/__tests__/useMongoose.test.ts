@@ -8,10 +8,7 @@ describe('environment', () => {
 
   beforeAll(async () => {
     mongoServer = await MongoMemoryServer.create();
-    con = await MongoClient.connect(mongoServer.getUri(), {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    con = await MongoClient.connect(mongoServer.getUri(), {});
   });
 
   beforeEach(() => {
@@ -55,17 +52,14 @@ describe('environment', () => {
     const mongoConnection = (await useMongoose()) as typeof mongoose;
     const col = mongoConnection.connection.collection('test');
     const result = await col.insertMany([{ a: 1 }, { b: 1 }]);
-    expect(result.result).toMatchSnapshot();
+    expect(result.insertedCount).toMatchSnapshot();
     expect(await col.countDocuments({})).toBe(2);
     mongoConnection.connection.close();
   });
 
   it('should authenticate via user and password', async () => {
     // connect to mongo
-    const mongoConnection = await mongoose.connect(mongoServer.getUri('admin'), {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    const mongoConnection = await mongoose.connect(mongoServer.getUri('admin'), {});
 
     // create the test user
     await mongoConnection.connection.db.command({
