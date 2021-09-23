@@ -21,7 +21,7 @@ export declare type NextApiHandlerWithMongoose<T = any> = (
  * @returns {NextApiRequestWithMongoose}
  */
 
-const withMongoose = (handler: NextApiHandlerWithMongoose, options?: mongoose.ConnectionOptions) => {
+const withMongoose = (handler: NextApiHandlerWithMongoose, options?: mongoose.MongooseOptions) => {
   return async (req: NextApiRequestWithMongoose, res: NextApiResponse): Promise<void> => {
     const client = await useMongoose(options);
 

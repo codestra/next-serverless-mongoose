@@ -20,7 +20,7 @@ if (!cached) {
  * @param  {mongoose.ConnectionOptions} options
  * @returns A mongoose connection
  */
-const useMongoose = async (options?: mongoose.ConnectOptions): Promise<typeof mongoose> => {
+const useMongoose = async (options?: mongoose.MongooseOptions): Promise<typeof mongoose> => {
   try {
     if (cached.connected) {
       return cached.connected;
